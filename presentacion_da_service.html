@@ -575,7 +575,8 @@
             problem: "Nula cobertura WiFi para dispositivos móviles y sensores en zona de fermentación.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Materias Primas / Mezanine", 
             img1Info: "EVIDENCIA ACTUAL", img1Icon: "fa-image",
-            ap: "10", sw: "1", apValue: "153.405", swValue: "254.077", service: "46,718,219.10", rental: "--", total: "--",
+            ap: "10", sw: "1", apValue: "153.405", swValue: "254.077", service: "39,259,007.66", rental: "--", total: "--",
+            fibraQty: "2", fibraValue: "95.878",
             mapImg: "fase 1.png"
         },
         {
@@ -585,7 +586,7 @@
             problem: "Deficiencia de señal que limita el uso de portátiles y tablets para mediciones en tiempo real.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Zona Franca y Admin", 
             img1Info: "EVIDENCIA ACTUAL", img1Icon: "fa-image",
-            ap: "6", sw: "2", apValue: "153.405", swValue: "254.077", service: "21,444,896.60", rental: "--", total: "--",
+            ap: "6", sw: "2", apValue: "153.405", swValue: "254.077", service: "18,020,921.52", rental: "--", total: "--",
             mapImg: "fase 2.png"
         },
         {
@@ -595,7 +596,7 @@
             problem: "Pasillos sin cobertura WiFi por déficit de equipos, afectando la operatividad logística.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Bodega Empaques", 
             img1Info: "PASILLOS SIN COBERTURA", img1Icon: "fa-image",
-            ap: "1", sw: "0", apValue: "153.405", swValue: "254.077", service: "16,513,676.71", rental: "--", total: "--",
+            ap: "1", sw: "0", apValue: "153.405", swValue: "254.077", service: "13,877,039.26", rental: "--", total: "--",
             mapImg: "fase 3.png"
         },
         {
@@ -605,7 +606,7 @@
             problem: "Ausencia total de cobertura WiFi en toda la Planta A impidiendo el monitoreo.",
             mapTitle: "PLANTA A", mapSubtitle: "Plano técnico Planta A y Oficina HAAS", 
             img1Info: "OFICINA HAAS (GABINETE)", img1Icon: "fa-image",
-            ap: "5", sw: "1", apValue: "153.405", swValue: "254.077", service: "42,740,746.61", rental: "--", total: "--",
+            ap: "5", sw: "1", apValue: "153.405", swValue: "254.077", service: "35,916,593.80", rental: "--", total: "--",
             mapImg: "fase 4.png"
         },
         {
@@ -615,7 +616,7 @@
             problem: "Cableado expuesto y ubicación inadecuada de SWITCH generando riesgos.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Salas Barquillos 3 y 4", 
             img1Info: "CABLEADO EXPUESTO", img1Icon: "fa-triangle-exclamation",
-            ap: "0", sw: "0", apValue: "153.405", swValue: "254.077", service: "18,886,737.62", rental: "--", total: "--",
+            ap: "0", sw: "0", apValue: "153.405", swValue: "254.077", service: "15,871,208.09", rental: "--", total: "--",
             mapImg: "fase 5.png"
         },
         {
@@ -625,7 +626,7 @@
             problem: "Zonas sin cobertura y alta tasa de fallos por corrosión y sobrecalentamiento.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Planta B", 
             img1Info: "EVIDENCIA DAÑOS", img1Icon: "fa-image",
-            ap: "3", sw: "1", apValue: "153.405", swValue: "254.077", service: "32,829,253.30", rental: "--", total: "--",
+            ap: "3", sw: "1", apValue: "153.405", swValue: "254.077", service: "27,587,607.82", rental: "--", total: "--",
             mapImg: "fase 6.png"
         },
         {
@@ -635,18 +636,18 @@
             problem: "Puntos ciegos en pasillos que limitan la velocidad de respuesta logística.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Bodega Cendist", 
             img1Info: "VISTA PASILLOS", img1Icon: "fa-warehouse",
-            ap: "2", sw: "0", apValue: "153.405", swValue: "254.077", service: "21,582,347.51", rental: "--", total: "--",
+            ap: "2", sw: "0", apValue: "153.405", swValue: "254.077", service: "18,136,426.48", rental: "--", total: "--",
             mapImg: "fase 7.png"
         }
     ];
 
     function buildPhaseSlide(data) {
         return `
-        <div class="px-12 pt-8 pb-4">
-            <div class="flex items-center justify-between border-b border-gray-200 pb-4">
+        <div class="px-12 pt-4 pb-2">
+            <div class="flex items-center justify-between border-b border-gray-200 pb-2">
                 <div>
-                    <div class="phase-indicator force-text-white font-montserrat tracking-widest">FASE ${data.num}</div>
-                    <h1 class="font-montserrat font-black text-3xl text-gray-900 uppercase tracking-tight m-0">${data.title}</h1>
+                    <div class="phase-indicator force-text-white font-montserrat tracking-widest text-[10px] py-1">FASE ${data.num}</div>
+                    <h1 class="font-montserrat font-black text-2xl text-gray-900 uppercase tracking-tight m-0">${data.title}</h1>
                 </div>
                 <div class="text-right">
                     <p class="font-bold tracking-widest text-xs uppercase m-0 text-gray-500">D.A. SERVICE S.A.S.</p>
@@ -654,29 +655,29 @@
                 </div>
             </div>
         </div>
-        <div class="content-grid">
-            <div class="left-panel">
+        <div class="content-grid" style="padding-top: 0.25rem;">
+            <div class="left-panel" style="gap: 0.5rem;">
                 <div class="info-card">
                     <div class="flex gap-3">
                         <div class="icon-box bg-red-50 text-da-red"><i class="fa-solid ${data.iconArea}"></i></div>
                         <div><p class="label-text m-0">Área de Intervención</p><p class="value-text font-bold m-0">${data.area}</p></div>
                     </div>
                 </div>
-                <div class="info-card border-l-4 border-gray-800">
+                <div class="info-card border-l-4 border-gray-800" style="padding: 0.5rem 0.75rem;">
                     <div class="flex gap-3">
-                        <div class="icon-box text-gray-800" style="background: rgba(31, 41, 55, 0.1);"><i class="fa-solid ${data.iconDesc}"></i></div>
-                        <div><p class="label-text m-0">Descripción Operativa</p><p class="value-text m-0">${data.desc}</p></div>
+                        <div class="icon-box text-gray-800 scale-90" style="background: rgba(31, 41, 55, 0.1);"><i class="fa-solid ${data.iconDesc}"></i></div>
+                        <div><p class="label-text m-0">Descripción Operativa</p><p class="value-text m-0 text-xs">${data.desc}</p></div>
                     </div>
                 </div>
-                <div class="problem-card">
+                <div class="problem-card" style="padding: 0.5rem 0.75rem;">
                     <div class="flex gap-3">
-                        <div class="problem-icon-box"><i class="fa-solid fa-triangle-exclamation"></i></div>
-                        <div><p class="label-text text-red-600 m-0">Problemática Actual</p><p class="value-text m-0 text-gray-800">${data.problem}</p></div>
+                        <div class="problem-icon-box scale-90"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div><p class="label-text text-red-600 m-0">Problemática Actual</p><p class="value-text m-0 text-xs text-gray-800">${data.problem}</p></div>
                     </div>
                 </div>
                 <div class="mt-auto">
-                    <div class="info-card border-da-red bg-white shadow-sm p-4 rounded-xl border-t-2">
-                        <div class="grid grid-cols-1 gap-2">
+                    <div class="info-card border-da-red bg-white shadow-sm p-2 px-3 rounded-xl border-t-2">
+                        <div class="grid grid-cols-1 gap-1">
                             <!-- AP (Valor y Cantidad) -->
                             <div class="flex items-center justify-between border-b border-gray-100 pb-2">
                                 <div class="flex items-center gap-3">
@@ -705,6 +706,22 @@
                                     <p class="font-mono font-bold text-da-dark text-sm m-0 leading-none">${data.sw}</p>
                                 </div>
                             </div>
+                            <!-- Fibra (Solo si aplica) -->
+                            ${data.fibraQty ? `
+                            <div class="flex items-center justify-between border-b border-gray-100 pb-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded bg-green-50 text-green-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-bolt text-sm"></i></div>
+                                    <div>
+                                        <p class="font-bold text-gray-800 text-xs m-0 uppercase tracking-tighter">FIBRA</p>
+                                        <p class="text-[10px] text-gray-400 m-0">Valor: <span class="text-green-600 font-black">$ ${data.fibraValue}</span></p>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-2 py-1 border border-gray-200 rounded text-center min-w-[60px]">
+                                    <p class="text-[8px] text-gray-400 font-bold uppercase m-0 leading-tight">Cantidad</p>
+                                    <p class="font-mono font-bold text-da-dark text-sm m-0 leading-none">${data.fibraQty}</p>
+                                </div>
+                            </div>
+                            ` : ''}
                             <!-- Servicio -->
                             <div class="flex items-center justify-between border-b border-gray-100 pb-2">
                                 <div class="flex items-center gap-3">
@@ -722,9 +739,11 @@
                                 <p class="font-mono font-black text-gray-900 text-sm m-0">$ ${(() => {
                                     const apC = parseInt(data.ap) || 0;
                                     const swC = parseInt(data.sw) || 0;
+                                    const fC = parseInt(data.fibraQty) || 0;
                                     const apV = parseFloat(data.apValue.replace(/,/g, '')) || 0;
                                     const swV = parseFloat(data.swValue.replace(/,/g, '')) || 0;
-                                    const total = (apC * apV) + (swC * swV);
+                                    const fV = parseFloat((data.fibraValue || "0").replace(/,/g, '')) || 0;
+                                    const total = (apC * apV) + (swC * swV) + (fC * fV);
                                     return total.toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
                                 })()}</p>
                             </div>
@@ -766,9 +785,11 @@
             // Calcular alquiler de esta fase
             const apC = parseInt(data.ap) || 0;
             const swC = parseInt(data.sw) || 0;
+            const fC = parseInt(data.fibraQty) || 0;
             const apV = parseFloat(data.apValue.replace(/,/g, '')) || 0;
             const swV = parseFloat(data.swValue.replace(/,/g, '')) || 0;
-            const rentalPhase = (apC * apV) + (swC * swV);
+            const fV = parseFloat((data.fibraValue || "0").replace(/,/g, '')) || 0;
+            const rentalPhase = (apC * apV) + (swC * swV) + (fC * fV);
             totalRental += rentalPhase;
             
             const formattedRental = rentalPhase.toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
