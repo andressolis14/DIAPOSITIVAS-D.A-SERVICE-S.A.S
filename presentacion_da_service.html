@@ -759,8 +759,8 @@
             <tr>
                 <td class="text-center"><div class="phase-badge force-text-white">${data.num.replace(/^0/, '')}</div></td>
                 <td><p class="m-0 font-medium text-gray-800">${data.title.replace(/<span.*?>|<\/span>/g, '')}</p></td>
-                <td class="text-right font-mono editable-field">$ ${data.service}</td>
-                <td class="text-right font-mono editable-field">$ ${data.rental}</td>
+                <td class="text-right font-mono editable-field whitespace-nowrap">$ ${data.service}</td>
+                <td class="text-right font-mono editable-field whitespace-nowrap">$ ${data.rental}</td>
             </tr>`;
         });
         
@@ -770,8 +770,8 @@
         html += `
         <tr class="total-row">
             <td class="text-right pr-8" colspan="2"><p class="m-0 uppercase tracking-wider">Inversión Total Proyecto</p></td>
-            <td class="text-right font-mono text-gray-900 font-bold">$ ${formattedTotal}</td>
-            <td class="text-right font-mono text-gray-600">$ --</td>
+            <td class="text-right font-mono text-gray-900 font-bold whitespace-nowrap">$ ${formattedTotal}</td>
+            <td class="text-right font-mono text-gray-600 whitespace-nowrap">$ --</td>
         </tr>`;
         
         tbody.innerHTML = html;
