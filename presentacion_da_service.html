@@ -575,7 +575,7 @@
             problem: "Nula cobertura WiFi para dispositivos móviles y sensores en zona de fermentación.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Materias Primas / Mezanine", 
             img1Info: "EVIDENCIA ACTUAL", img1Icon: "fa-image",
-            ap: "#", sw: "#", apValue: "153.405", swValue: "254.077", service: "46,718,219.10", rental: "--", total: "--",
+            ap: "10", sw: "1", apValue: "153.405", swValue: "254.077", service: "46,718,219.10", rental: "--", total: "--",
             mapImg: "fase 1.png"
         },
         {
@@ -585,7 +585,7 @@
             problem: "Deficiencia de señal que limita el uso de portátiles y tablets para mediciones en tiempo real.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Zona Franca y Admin", 
             img1Info: "EVIDENCIA ACTUAL", img1Icon: "fa-image",
-            ap: "#", sw: "#", apValue: "153.405", swValue: "254.077", service: "21,444,896.60", rental: "--", total: "--",
+            ap: "6", sw: "2", apValue: "153.405", swValue: "254.077", service: "21,444,896.60", rental: "--", total: "--",
             mapImg: "fase 2.png"
         },
         {
@@ -595,7 +595,7 @@
             problem: "Pasillos sin cobertura WiFi por déficit de equipos, afectando la operatividad logística.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Bodega Empaques", 
             img1Info: "PASILLOS SIN COBERTURA", img1Icon: "fa-image",
-            ap: "#", sw: "#", apValue: "153.405", swValue: "254.077", service: "16,513,676.71", rental: "--", total: "--",
+            ap: "1", sw: "0", apValue: "153.405", swValue: "254.077", service: "16,513,676.71", rental: "--", total: "--",
             mapImg: "fase 3.png"
         },
         {
@@ -605,7 +605,7 @@
             problem: "Ausencia total de cobertura WiFi en toda la Planta A impidiendo el monitoreo.",
             mapTitle: "PLANTA A", mapSubtitle: "Plano técnico Planta A y Oficina HAAS", 
             img1Info: "OFICINA HAAS (GABINETE)", img1Icon: "fa-image",
-            ap: "#", sw: "#", apValue: "153.405", swValue: "254.077", service: "42,740,746.61", rental: "--", total: "--",
+            ap: "5", sw: "1", apValue: "153.405", swValue: "254.077", service: "42,740,746.61", rental: "--", total: "--",
             mapImg: "fase 4.png"
         },
         {
@@ -615,7 +615,7 @@
             problem: "Cableado expuesto y ubicación inadecuada de SWITCH generando riesgos.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Salas Barquillos 3 y 4", 
             img1Info: "CABLEADO EXPUESTO", img1Icon: "fa-triangle-exclamation",
-            ap: "#", sw: "#", apValue: "153.405", swValue: "254.077", service: "18,886,737.62", rental: "--", total: "--",
+            ap: "0", sw: "0", apValue: "153.405", swValue: "254.077", service: "18,886,737.62", rental: "--", total: "--",
             mapImg: "fase 5.png"
         },
         {
@@ -625,7 +625,7 @@
             problem: "Zonas sin cobertura y alta tasa de fallos por corrosión y sobrecalentamiento.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Planta B", 
             img1Info: "EVIDENCIA DAÑOS", img1Icon: "fa-image",
-            ap: "#", sw: "#", apValue: "153.405", swValue: "254.077", service: "32,829,253.30", rental: "--", total: "--",
+            ap: "3", sw: "1", apValue: "153.405", swValue: "254.077", service: "32,829,253.30", rental: "--", total: "--",
             mapImg: "fase 6.png"
         },
         {
@@ -635,7 +635,7 @@
             problem: "Puntos ciegos en pasillos que limitan la velocidad de respuesta logística.",
             mapTitle: "UBICACIÓN", mapSubtitle: "Plano técnico Bodega Cendist", 
             img1Info: "VISTA PASILLOS", img1Icon: "fa-warehouse",
-            ap: "#", sw: "#", apValue: "153.405", swValue: "254.077", service: "21,582,347.51", rental: "--", total: "--",
+            ap: "2", sw: "0", apValue: "153.405", swValue: "254.077", service: "21,582,347.51", rental: "--", total: "--",
             mapImg: "fase 7.png"
         }
     ];
@@ -719,7 +719,14 @@
                                     <div class="w-8 h-8 rounded bg-purple-50 text-purple-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-calendar-check text-sm"></i></div>
                                     <span class="font-bold text-gray-700 text-xs uppercase tracking-tighter">Alquiler</span>
                                 </div>
-                                <p class="font-mono font-black text-gray-900 text-sm m-0">$ ${data.rental}</p>
+                                <p class="font-mono font-black text-gray-900 text-sm m-0">$ ${(() => {
+                                    const apC = parseInt(data.ap) || 0;
+                                    const swC = parseInt(data.sw) || 0;
+                                    const apV = parseFloat(data.apValue.replace(/,/g, '')) || 0;
+                                    const swV = parseFloat(data.swValue.replace(/,/g, '')) || 0;
+                                    const total = (apC * apV) + (swC * swV);
+                                    return total.toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+                                })()}</p>
                             </div>
                         </div>
                     </div>
@@ -750,28 +757,40 @@
     function buildInvestmentTable() {
         const tbody = document.querySelector('#slide-10 tbody');
         let totalService = 0;
+        let totalRental = 0;
         let html = '';
         phaseData.forEach(data => {
-            const val = parseFloat(data.service.replace(/,/g, ''));
-            if (!isNaN(val)) totalService += val;
+            const servVal = parseFloat(data.service.replace(/,/g, '')) || 0;
+            totalService += servVal;
             
+            // Calcular alquiler de esta fase
+            const apC = parseInt(data.ap) || 0;
+            const swC = parseInt(data.sw) || 0;
+            const apV = parseFloat(data.apValue.replace(/,/g, '')) || 0;
+            const swV = parseFloat(data.swValue.replace(/,/g, '')) || 0;
+            const rentalPhase = (apC * apV) + (swC * swV);
+            totalRental += rentalPhase;
+            
+            const formattedRental = rentalPhase.toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+
             html += `
             <tr>
                 <td class="text-center"><div class="phase-badge force-text-white">${data.num.replace(/^0/, '')}</div></td>
                 <td><p class="m-0 font-medium text-gray-800">${data.title.replace(/<span.*?>|<\/span>/g, '')}</p></td>
                 <td class="text-right font-mono editable-field whitespace-nowrap">$ ${data.service}</td>
-                <td class="text-right font-mono editable-field whitespace-nowrap">$ ${data.rental}</td>
+                <td class="text-right font-mono editable-field whitespace-nowrap">$ ${formattedRental}</td>
             </tr>`;
         });
         
-        const formattedTotal = totalService.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const formattedTotalServ = totalService.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const formattedTotalRent = totalRental.toLocaleString('en-US', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
         
         // Add total row
         html += `
         <tr class="total-row">
             <td class="text-right pr-8" colspan="2"><p class="m-0 uppercase tracking-wider">Inversión Total Proyecto</p></td>
-            <td class="text-right font-mono text-gray-900 font-bold whitespace-nowrap">$ ${formattedTotal}</td>
-            <td class="text-right font-mono text-gray-600 whitespace-nowrap">$ --</td>
+            <td class="text-right font-mono text-gray-900 font-bold whitespace-nowrap">$ ${formattedTotalServ}</td>
+            <td class="text-right font-mono text-gray-600 whitespace-nowrap">$ ${formattedTotalRent}</td>
         </tr>`;
         
         tbody.innerHTML = html;
