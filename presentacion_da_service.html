@@ -470,8 +470,8 @@
                         <tr>
                             <th class="w-16 text-center force-text-white">Fase</th>
                             <th class="w-auto force-text-white">Descripción del Área</th>
-                            <th class="w-40 text-right force-text-white">Valor Servicio</th>
-                            <th class="w-40 text-right force-text-white">Valor Alquiler</th>
+                            <th class="w-40 text-right force-text-white text-[9px]">VALOR INSTALACIÓN INFRAESTRUCTURA</th>
+                            <th class="w-40 text-right force-text-white text-[9px]">VALOR RECURRENTE MENSUAL INFOMEDIA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -683,7 +683,7 @@
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 rounded bg-red-50 text-da-red flex items-center justify-center shrink-0"><i class="fa-solid fa-wifi text-sm"></i></div>
                                     <div>
-                                        <p class="font-bold text-gray-800 text-xs m-0 uppercase tracking-tighter">AP</p>
+                                        <p class="font-bold text-gray-800 text-[11px] m-0 uppercase tracking-tighter">AP</p>
                                         <p class="text-[10px] text-gray-400 m-0">Valor: <span class="text-da-red font-black">$ ${data.apValue || '--'}</span></p>
                                     </div>
                                 </div>
@@ -697,7 +697,7 @@
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 rounded bg-gray-100 text-gray-700 flex items-center justify-center shrink-0"><i class="fa-solid fa-network-wired text-sm"></i></div>
                                     <div>
-                                        <p class="font-bold text-gray-800 text-xs m-0 uppercase tracking-tighter">SW</p>
+                                        <p class="font-bold text-gray-800 text-[11px] m-0 uppercase tracking-tighter">SW</p>
                                         <p class="text-[10px] text-gray-400 m-0">Valor: <span class="text-gray-700 font-black">$ ${data.swValue || '--'}</span></p>
                                     </div>
                                 </div>
@@ -712,7 +712,7 @@
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 rounded bg-green-50 text-green-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-bolt text-sm"></i></div>
                                     <div>
-                                        <p class="font-bold text-gray-800 text-xs m-0 uppercase tracking-tighter">FIBRA</p>
+                                        <p class="font-bold text-gray-800 text-[11px] m-0 uppercase tracking-tighter">FIBRA</p>
                                         <p class="text-[10px] text-gray-400 m-0">Valor: <span class="text-green-600 font-black">$ ${data.fibraValue}</span></p>
                                     </div>
                                 </div>
@@ -722,19 +722,19 @@
                                 </div>
                             </div>
                             ` : ''}
-                            <!-- Servicio -->
+                            <!-- Instalación Infraestructura -->
                             <div class="flex items-center justify-between border-b border-gray-100 pb-2">
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 rounded bg-blue-50 text-blue-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-screwdriver-wrench text-sm"></i></div>
-                                    <span class="font-bold text-gray-700 text-xs uppercase tracking-tighter">Servicio</span>
+                                    <span class="font-bold text-gray-700 text-[8px] uppercase tracking-tighter">Instalación Infraestructura</span>
                                 </div>
                                 <p class="font-mono font-black text-gray-900 text-sm m-0">$ ${data.service}</p>
                             </div>
-                            <!-- Alquiler -->
+                            <!-- Recurrente Mensual -->
                             <div class="flex items-center justify-between pt-1">
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 rounded bg-purple-50 text-purple-600 flex items-center justify-center shrink-0"><i class="fa-solid fa-calendar-check text-sm"></i></div>
-                                    <span class="font-bold text-gray-700 text-xs uppercase tracking-tighter">Alquiler</span>
+                                    <span class="font-bold text-gray-700 text-[7px] uppercase tracking-tighter leading-none">Recurrente Mensual Infomedia</span>
                                 </div>
                                 <p class="font-mono font-black text-gray-900 text-sm m-0">$ ${(() => {
                                     const apC = parseInt(data.ap) || 0;
