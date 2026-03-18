@@ -423,23 +423,8 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-
-    <!-- ==================== TEMPLATE: GENERADOR DE FASES (SLIDES 4 a 10) ==================== -->
-    <div class="slide-container" id="slide-3"></div>
-    <div class="slide-container" id="slide-4"></div>
-    <div class="slide-container" id="slide-5"></div>
-    <div class="slide-container" id="slide-6"></div>
-    <div class="slide-container" id="slide-7"></div>
-    <div class="slide-container" id="slide-8"></div>
-    <div class="slide-container" id="slide-9"></div>
-
-
-    <!-- ==================== SLIDE 10: RESUMEN FINANCIERO ==================== -->
-    <div class="slide-container" id="slide-10">
+    </div>    <!-- ==================== SLIDE 3: RESUMEN FINANCIERO ==================== -->
+    <div class="slide-container" id="slide-3">
         <div class="blur-shape bg-red-500 opacity-10" style="width: 400px; height: 400px; top: -100px; right: -100px; filter: blur(80px);"></div>
         
         <div class="relative z-10 px-16 pt-10 pb-4 flex justify-between items-end">
@@ -492,6 +477,16 @@
             </div>
         </div>
         <div class="absolute bottom-0 left-0 w-full h-2 bg-da-red"></div>
+    </div>
+
+    <!-- ==================== TEMPLATE: GENERADOR DE FASES (SLIDES 4 a 10) ==================== -->
+    <div class="slide-container" id="slide-4"></div>
+    <div class="slide-container" id="slide-5"></div>
+    <div class="slide-container" id="slide-6"></div>
+    <div class="slide-container" id="slide-7"></div>
+    <div class="slide-container" id="slide-8"></div>
+    <div class="slide-container" id="slide-9"></div>
+    <div class="slide-container" id="slide-10"></div>bg-da-red"></div>
     </div>
 
     <!-- ==================== SLIDE 11: CONCLUSIONES ==================== -->
@@ -770,7 +765,7 @@
     }
 
     function buildInvestmentTable() {
-        const tbody = document.querySelector('#slide-10 tbody');
+        const tbody = document.querySelector('#slide-3 tbody');
         let totalService = 0;
         let totalRental = 0;
         let html = '';
@@ -814,7 +809,7 @@
     }
 
     phaseData.forEach((data, index) => {
-        document.getElementById(`slide-${index + 3}`).innerHTML = buildPhaseSlide(data);
+        document.getElementById(`slide-${index + 4}`).innerHTML = buildPhaseSlide(data);
     });
     
     buildInvestmentTable();
